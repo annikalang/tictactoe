@@ -11,3 +11,11 @@ const winCombos = [
   [0, 4, 8],
   [6, 4, 2]
 ]
+
+const cells = document.querySelectorAll('.cell')
+startGame();
+
+function startGame() {
+  document.querySelector('.endgame').style.display = "none";
+  origBoard = Array.from(Array(9).keys())
+}
