@@ -1,5 +1,5 @@
 let origBoard;
-const huPlayer = '0';
+const humanPlayer = '0';
 const aiPlayer = 'X';
 const winCombos = [
   [0, 1, 2],
@@ -17,5 +17,16 @@ startGame();
 
 function startGame() {
   document.querySelector('.endgame').style.display = "none";
-  origBoard = Array.from(Array(9).keys())
+  origBoard = Array.from(Array(9).keys());
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].innerText = '';
+    cells[i].style.removeProperty('background-color');
+    cells[i].addEventListener('click', turnClick, false);
+  }
 }
+
+function turnClick(square) {
+  turn(square.target.id, humanPlayer)
+}
+
+
