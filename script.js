@@ -29,4 +29,9 @@ function turnClick(square) {
   turn(square.target.id, humanPlayer)
 }
 
+function turn(squareId, player) {
+  origBoard[squareId] = player;
+  document.getElementById(squareId).innerText = player;
+}
+
 
