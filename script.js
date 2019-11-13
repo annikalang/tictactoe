@@ -62,6 +62,10 @@ function gameOver(gameWon) {
   }
 }
 
+function emptySquares() {
+  return origBoard.filter(s => typeof s == 'number');
+}
+
 function bestSpot() {
   return emptySquares()[0];
 }
