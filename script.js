@@ -62,4 +62,8 @@ function gameOver(gameWon) {
   }
 }
 
+function bestSpot() {
+  return emptySquares()[0];
+}
+
 
