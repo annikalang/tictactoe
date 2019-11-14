@@ -62,6 +62,11 @@ function gameOver(gameWon) {
   }
 }
 
+function declareWinner(who) {
+  document.querySelector(".endgame").style.display = "block";
+  document.querySelector(".endgame .text").innerText = who;
+}
+
 function emptySquares() {
   return origBoard.filter(s => typeof s == 'number');
 }
