@@ -73,7 +73,8 @@ function emptySquares() {
 }
 
 function bestSpot() {
-  return emptySquares()[0];
+  // return emptySquares()[0];
+  return minimac(origBoard, aiPlayer).index;
 }
 
 function checkTie() {
