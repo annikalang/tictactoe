@@ -74,7 +74,7 @@ function emptySquares() {
 
 function bestSpot() {
   // return emptySquares()[0];
-  return minimas(origBoard, aiPlayer).index;
+  return minimax(origBoard, aiPlayer).index;
 }
 
 function checkTie() {
