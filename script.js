@@ -1,3 +1,4 @@
+// AI logic
 let origBoard;
 const humanPlayer = '0';
 const aiPlayer = 'X';
