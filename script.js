@@ -29,7 +29,7 @@ function startGame() {
   document.querySelector('.endgame').style.display = "none"; // selecting the endgame element and set the css-style display property to none
   origBoard = Array.from(Array(9).keys()); // the array origBoard contains every number from 0 to 9
 
-  //removing als the x and o from the table
+  // removing als the x and o from the table
   for (let i = 0; i < cells.length; i++) {
     cells[i].innerText = ''; // there's nothing in the cell
     cells[i].style.removeProperty('background-color'); // remove background color of winner's cells
@@ -37,9 +37,10 @@ function startGame() {
   }
 }
 
+// definition of turnClick function (see above)
 function turnClick(square) {
   if (typeof origBoard[square.target.id] == 'number') {
-    turn(square.target.id, humanPlayer)
+    turn(square.target.id, humanPlayer) // the human player is going to take the turn
     if (!checkTie()) turnClick(bestSpot(), aiPlayer);
   }
 }
