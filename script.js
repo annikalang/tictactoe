@@ -45,9 +45,10 @@ function turnClick(square) {
   }
 }
 
-function turn(squareId, player) {
-  origBoard[squareId] = player;
-  document.getElementById(squareId).innerText = player;
+// definition of turn function (see above)
+function turn(squareId, player) { //player is the humanPlayer in the above case
+  origBoard[squareId] = player; // set the origBoard array to the cell we just clicked and let the player who just clicked that spot take this place
+  document.getElementById(squareId).innerText = player; // select the element with the square id, which we just clicked, and set the inner text to the player who took it
   let gameWon = checkWin(origBoard, player)
   if (gameWon) gameOver(gameWon)
 }
