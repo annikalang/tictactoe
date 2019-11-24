@@ -1,6 +1,12 @@
-let origBoard;
+// Basic Setup
+
+let origBoard; // original Board, is going to be an array that keeps track of what is in each square of the tic tac toe board
+
+// Players' variables
 const humanPlayer = '0';
 const aiPlayer = 'X';
+
+// Array of  arrays of winning-combinations
 const winCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -12,7 +18,8 @@ const winCombos = [
   [6, 4, 2]
 ]
 
-const cells = document.querySelectorAll('.cell')
+// Variable storing a reference to each cell in the table
+const cells = document.querySelectorAll('.cell') // selects each element on the page that has the class "cell"
 startGame();
 
 function startGame() {
