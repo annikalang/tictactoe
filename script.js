@@ -20,15 +20,20 @@ const winCombos = [
 
 // Variable storing a reference to each cell in the table
 const cells = document.querySelectorAll('.cell') // selects each element on the page that has the class "cell"
+
+// we need to start the game with a function, which we are going to define now
 startGame();
 
+// definition of startGame function
 function startGame() {
-  document.querySelector('.endgame').style.display = "none";
-  origBoard = Array.from(Array(9).keys());
+  document.querySelector('.endgame').style.display = "none"; // selecting the endgame element and set the css-style display property to none
+  origBoard = Array.from(Array(9).keys()); // the array origBoard contains every number from 0 to 9
+
+  //removing als the x and o from the table
   for (let i = 0; i < cells.length; i++) {
-    cells[i].innerText = '';
-    cells[i].style.removeProperty('background-color');
-    cells[i].addEventListener('click', turnClick, false);
+    cells[i].innerText = ''; // there's nothing in the cell
+    cells[i].style.removeProperty('background-color'); // remove background color of winner's cells
+    cells[i].addEventListener('click', turnClick, false); // call turnClick function everytime a cell is clicked
   }
 }
 
