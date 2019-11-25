@@ -53,9 +53,16 @@ function turn(squareId, player) { //player is the humanPlayer in the above case
   if (gameWon) gameOver(gameWon) // if we find out the game has been one, use the gameOver function
 }
 
+// definition of checkWin function (see above)
 function checkWin(board, player) {
+  // a fancy way to find all the places on the board that have already been played in.
+  // the reduce method is going to go through every element of the board array and do something.
+  // it's going to give back one single value. The accumulator (a) is the value that it's going to give back in the end.
+  // element in the board array (e) is, index (i)
   let plays = board.reduce((a, e, i) =>
     (e === player) ? a.concat(i) : a, []);
+    // if the element (e) equals the player, then we're going to add the index (i) to the array,
+    // if element doesn't equal the player, we just return the accumulator. the accumulator is initialized to an empty array.
   let gameWon = null;
   for (let [index, win] of winCombos.entries()) {
     if (win.every(elem => plays.indexOf(elem) > -1)) {
