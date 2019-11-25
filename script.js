@@ -69,11 +69,11 @@ function checkWin(board, player) {
   for (let [index, win] of winCombos.entries()) { // we have to loop through every winCombo (see above)
     // we check if the player has played in every spot that counts as a win for that win
     if (win.every(elem => plays.indexOf(elem) > -1)) { // we're going through every element in the winCombo (f.e. 0,1,2), we will check the places the player has played on the board, and if the index of the elements is more than -1
-      gameWon = {index: index, player: player};
+      gameWon = {index: index, player: player}; // if this is true, the player has won, the variable gameWon will be set to the player
       break;
     }
   }
-  return gameWon;
+  return gameWon; // if nobody wins, this will be null
 }
 
 function gameOver(gameWon) {
