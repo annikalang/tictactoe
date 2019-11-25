@@ -49,8 +49,8 @@ function turnClick(square) {
 function turn(squareId, player) { //player is the humanPlayer in the above case
   origBoard[squareId] = player; // set the origBoard array to the cell we just clicked and let the player who just clicked that spot take this place
   document.getElementById(squareId).innerText = player; // select the element with the square id, which we just clicked, and set the inner text to the player who took it
-  let gameWon = checkWin(origBoard, player)
-  if (gameWon) gameOver(gameWon)
+  let gameWon = checkWin(origBoard, player) //whenever a turn is taken, we're going to check if the game has been won
+  if (gameWon) gameOver(gameWon) // if we find out the game has been one, use the gameOver function
 }
 
 function checkWin(board, player) {
