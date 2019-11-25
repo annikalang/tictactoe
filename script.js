@@ -46,24 +46,34 @@ function turnClick(square) {
 }
 
 // definition of turn function (see above)
-function turn(squareId, player) { //player is the humanPlayer in the above case
+function turn(squareId, player) { // player is the humanPlayer in the above case
   origBoard[squareId] = player; // set the origBoard array to the cell we just clicked and let the player who just clicked that spot take this place
   document.getElementById(squareId).innerText = player; // select the element with the square id, which we just clicked, and set the inner text to the player who took it
-  let gameWon = checkWin(origBoard, player)
-  if (gameWon) gameOver(gameWon)
+  let gameWon = checkWin(origBoard, player) // whenever a turn is taken, we're going to check if the game has been won
+  if (gameWon) gameOver(gameWon) // if we find out the game has been one, use the gameOver function
 }
 
+// definition of checkWin function (see above)
 function checkWin(board, player) {
+  // a fancy way to find all the places on the board that have already been played in.
+  // the reduce method is going to go through every element of the board array and do something.
+  // it's going to give back one single value. The accumulator (a) is the value that it's going to give back in the end.
+  // element in the board array (e) is, index (i)
   let plays = board.reduce((a, e, i) =>
     (e === player) ? a.concat(i) : a, []);
+    // if the element (e) equals the player, then we're going to add the index (i) to the array,
+    // if element doesn't equal the player, we just return the accumulator. the accumulator is initialized to an empty array.
+    // this is a way to find the index every player has played in.
   let gameWon = null;
-  for (let [index, win] of winCombos.entries()) {
-    if (win.every(elem => plays.indexOf(elem) > -1)) {
-      gameWon = {index: index, player: player};
+  // let's check if the game has been won, this a for loop
+  for (let [index, win] of winCombos.entries()) { // we have to loop through every winCombo (see above)
+    // we check if the player has played in every spot that counts as a win for that win
+    if (win.every(elem => plays.indexOf(elem) > -1)) { // we're going through every element in the winCombo (f.e. 0,1,2), we will check the places the player has played on the board, and if the index of the elements is more than -1
+      gameWon = {index: index, player: player}; // if this is true, the player has won, the variable gameWon will be set to the player
       break;
     }
   }
-  return gameWon;
+  return gameWon; // if nobody wins, this will be null
 }
 
 function gameOver(gameWon) {
