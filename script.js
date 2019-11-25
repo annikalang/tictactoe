@@ -63,6 +63,7 @@ function checkWin(board, player) {
     (e === player) ? a.concat(i) : a, []);
     // if the element (e) equals the player, then we're going to add the index (i) to the array,
     // if element doesn't equal the player, we just return the accumulator. the accumulator is initialized to an empty array.
+    // this is a way to find the index every player has played in.
   let gameWon = null;
   for (let [index, win] of winCombos.entries()) {
     if (win.every(elem => plays.indexOf(elem) > -1)) {
