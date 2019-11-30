@@ -39,8 +39,11 @@ function startGame() {
 
 // definition of turnClick function (see above)
 function turnClick(square) {
+  // you can't click at a place that has already been clicked
   if (typeof origBoard[square.target.id] == 'number') {
-    turn(square.target.id, humanPlayer) // the human player is going to take the turn
+    // the human player is going to take the turn
+    turn(square.target.id, humanPlayer)
+    // beforte the ai player takes a turn, we have to check if it's a tie game
     if (!checkTie()) turnClick(bestSpot(), aiPlayer);
   }
 }
@@ -76,23 +79,34 @@ function checkWin(board, player) {
   return gameWon; // if nobody wins, this will be null
 }
 
+// definition of checkWin function (see above)
 function gameOver(gameWon) {
+  // the index of the win combo that won this game, we go through every index of that win combo
   for (let index of winCombos[gameWon.index]) {
+    // seeting the backgroundcolor of the win combo to whoever whon the game
     document.getElementById(index).style.backgroundColor =
+      // ternary operator: if the winning player is human, then the backgroundcolor will turn blue, if not it will turn red
       gameWon.player == humanPlayer ? "blue" : "red";
   }
+  // going through every cell, removing clickability
   for (var i = 0; i < cells.length; i++) {
+    // revmove the click event listener by setting it to false
     cells[i].removeEventListener('click', turnClick, false);
   }
+  // determine the winner
+  // ternary operator: if the winning player if a human player, it will declare "you win", else it will declare "you lose"
   declareWinner(gameWon.player == humanPlayer ? "You win!" : "You lose!");
 }
 
 function declareWinner(who) {
+  // setting style of endgame-div from display: none to display: block
   document.querySelector(".endgame").style.display = "block";
+  // set the inner text to who or "tie game"
   document.querySelector(".endgame .text").innerText = who;
 }
 
 function emptySquares() {
+  // we filter every element in the original board to see if the type of the element equals a number
   return origBoard.filter(s => typeof s == 'number');
 }
 
@@ -102,14 +116,21 @@ function bestSpot() {
 }
 
 function checkTie() {
+  // if every square is filled up
   if (emptySquares().length == 0) {
+    // for very single cell in the tictactoe board
     for (var i = 0; i < cells.length; i++) {
+      // we set the backgroundcolor to green
       cells[i].style.backgroundColor = "green";
+      // and we remove the event listener, so the user can't click anywhere
       cells[i].removeEventListener('click', turnClick, false);
     }
+    // declare a winner
     declareWinner("Tie Game!")
+    // if it's a tie it's true
     return true;
   }
+  // if this if statement is false
   return false;
 }
 
