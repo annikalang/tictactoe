@@ -103,6 +103,7 @@ function declareWinner(who) {
 }
 
 function emptySquares() {
+  // we filter every element in the original board to see if the type of the element equals a number
   return origBoard.filter(s => typeof s == 'number');
 }
 
