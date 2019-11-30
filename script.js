@@ -39,8 +39,11 @@ function startGame() {
 
 // definition of turnClick function (see above)
 function turnClick(square) {
+  // you can't click at a place that has already been clicked
   if (typeof origBoard[square.target.id] == 'number') {
-    turn(square.target.id, humanPlayer) // the human player is going to take the turn
+    // the human player is going to take the turn
+    turn(square.target.id, humanPlayer)
+    // beforte the ai player takes a turn, we have to check if it's a tie game
     if (!checkTie()) turnClick(bestSpot(), aiPlayer);
   }
 }
