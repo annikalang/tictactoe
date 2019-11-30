@@ -94,6 +94,7 @@ function gameOver(gameWon) {
     cells[i].removeEventListener('click', turnClick, false);
   }
   // determine the winner
+  // ternary operator: if the winning player if a human player, it will declare "you win", else it will declare "you lose"
   declareWinner(gameWon.player == humanPlayer ? "You win!" : "You lose!");
 }
 
