@@ -76,14 +76,21 @@ function checkWin(board, player) {
   return gameWon; // if nobody wins, this will be null
 }
 
+// definition of checkWin function (see above)
 function gameOver(gameWon) {
+  // the index of the win combo that won this game, we go through every index of that win combo
   for (let index of winCombos[gameWon.index]) {
+    // seeting the backgroundcolor of the win combo to whoever whon the game
     document.getElementById(index).style.backgroundColor =
+      // ternary operator: if the winning player is human, then the backgroundcolor will turn blue, if not it will turn red
       gameWon.player == humanPlayer ? "blue" : "red";
   }
+  // going through every cell, removing clickability
   for (var i = 0; i < cells.length; i++) {
+    // re3vmove the click event listener by setting it to false
     cells[i].removeEventListener('click', turnClick, false);
   }
+  // determine the winner
   declareWinner(gameWon.player == humanPlayer ? "You win!" : "You lose!");
 }
 
