@@ -90,7 +90,7 @@ function gameOver(gameWon) {
   }
   // going through every cell, removing clickability
   for (var i = 0; i < cells.length; i++) {
-    // re3vmove the click event listener by setting it to false
+    // revmove the click event listener by setting it to false
     cells[i].removeEventListener('click', turnClick, false);
   }
   // determine the winner
