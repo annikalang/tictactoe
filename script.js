@@ -98,7 +98,9 @@ function gameOver(gameWon) {
 }
 
 function declareWinner(who) {
+  // setting style of endgame-div from display: none to display: block
   document.querySelector(".endgame").style.display = "block";
+  // set the inner text to who or "tie game"
   document.querySelector(".endgame .text").innerText = who;
 }
 
@@ -113,14 +115,21 @@ function bestSpot() {
 }
 
 function checkTie() {
+  // if every square is filled up
   if (emptySquares().length == 0) {
+    // for very single cell in the tictactoe board
     for (var i = 0; i < cells.length; i++) {
+      // we set the backgroundcolor to green
       cells[i].style.backgroundColor = "green";
+      // and we remove the event listener, so the user can't click anywhere
       cells[i].removeEventListener('click', turnClick, false);
     }
+    // declare a winner
     declareWinner("Tie Game!")
+    // if it's a tie it's true
     return true;
   }
+  // if this if statement is false
   return false;
 }
 
